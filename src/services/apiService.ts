@@ -1,7 +1,6 @@
 import OrnamentData from "../components/Ornament/OrnamentData";
 
-// no end slash
-const base = "http://localhost:3001";
+const base = process.env.REACT_APP_API_BASE;
 
 type GetOrnamentsResponse = {
   ornaments: OrnamentData[];
