@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Gravit.io -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="505 1149 250 326" width="250pt" height="326pt">
+  <defs>
+    <clipPath id="_clipPath_89tipcIW1m4knw5TJjyz5APJphJbBdqk">
+      <rect width="1242" height="2688" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#_clipPath_89tipcIW1m4knw5TJjyz5APJphJbBdqk)">
+    <rect width="1242" height="2688" style="fill:rgb(157,157,157)" fill-opacity="0" />
+    <circle vector-effect="non-scaling-stroke" cx="630" cy="1350" r="125" fill="currentColor" />
+    <clipPath id="_clipPath_HaQaMdN26e2ZN891XxfB3R9JWc8WDZtx">
+      <circle vector-effect="non-scaling-stroke" cx="630" cy="1350" r="125" fill="rgb(247,247,247)" />
+    </clipPath>
+    <g clip-path="url(#_clipPath_HaQaMdN26e2ZN891XxfB3R9JWc8WDZtx)">
+      <path d=" M 504 1308.5 C 582.75 1339.694 666.79 1339.734 756 1308.5 L 756 1375.5 C 671.985 1414.818 588.025 1414.858 504 1375.5 L 504 1308.5 Z " fill="rgb(255,255,255)" />
+      <radialGradient id="_rgradient_2" fx="0.5" fy="0.5" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(233,0,0,148,514,1162)" gradientUnits="userSpaceOnUse">
+        <stop offset="2.083333333333333%" stop-opacity="1" style="stop-color:rgb(255,255,255)" />
+        <stop offset="37.916666666666664%" stop-opacity="1" style="stop-color:rgb(255,255,255)" />
+        <stop offset="100%" stop-opacity="0" style="stop-color:rgb(255,255,255)" />
+      </radialGradient>
+      <ellipse vector-effect="non-scaling-stroke" cx="630.5" cy="1235.9999999999998" rx="116.5" ry="74" fill="url(#_rgradient_2)" fill-opacity="0.5" />
+    </g>
+    <path d=" M 605.406 1209.46 L 600.192 1230.061 C 599.921 1231.131 600.552 1232.283 601.599 1232.633 C 620.739 1239.015 640.948 1239.025 658.419 1232.682 C 659.456 1232.306 660.079 1231.131 659.808 1230.061 L 654.594 1209.46 C 654.323 1208.39 653.21 1207.445 652.11 1207.352 C 639.069 1206.241 623.01 1206.251 607.891 1207.373 C 606.791 1207.455 605.677 1208.39 605.406 1209.46 Z " fill="rgb(255,221,0)" />
+    <path d="M 629.403 1149 L 630.597 1149 C 631.372 1149 632 1149.628 632 1150.403 L 632 1207.597 C 632 1208.372 631.372 1209 630.597 1209 L 629.403 1209 C 628.628 1209 628 1208.372 628 1207.597 L 628 1150.403 C 628 1149.628 628.628 1149 629.403 1149 Z" style="stroke:none;fill:#EBEBEB;stroke-miterlimit:10;" />
+  </g>
+</svg>
