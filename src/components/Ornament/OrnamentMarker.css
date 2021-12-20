@@ -1,27 +1,22 @@
-/* div.ornament-marker-container {
-  border: 1px solid red;
-} */
-
-div.ornament-marker-container > div#wrapper {
+div.ornament-marker-container > div.wrapper {
   width: 100%;
   height: 100%;
 }
 
-div.ornament-marker-container div#ornament {
+div.ornament-marker-container div.ornament {
   width: 100%;
   height: 100%;
-  border: 0;
   border-radius: 50%;
-  background: white;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
-  position: relative;
   overflow: hidden;
-  z-index: 0;
+  position: relative;
+  z-index: 1;
 }
 
-div.ornament-marker-container div#ornament::before {
+div.ornament-marker-container div.ornament::before {
   content: " ";
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 50%;
   background: rgb(255, 255, 255);
@@ -30,10 +25,10 @@ div.ornament-marker-container div#ornament::before {
     rgba(255, 255, 255, 0.7) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-  z-index: 2;
+  z-index: 1;
 }
 
-div.ornament-marker-container div#ornament::after {
+div.ornament-marker-container div.ornament::after {
   content: " ";
   position: absolute;
   bottom: 0;
@@ -45,10 +40,21 @@ div.ornament-marker-container div#ornament::after {
     rgba(0, 0, 0, 0.5) 0%,
     rgba(0, 0, 0, 0) 100%
   );
-  z-index: 2;
+  z-index: 1;
 }
 
-div.ornament-marker-container div#ornament > div#accent {
+/* Ornament style styles */
+div.ornament-marker-container
+  > div.wrapper[data-style="solid"]
+  > div.ornament
+  > div.accent {
+  display: none;
+}
+
+div.ornament-marker-container
+  > div.wrapper[data-style="striped"]
+  > div.ornament
+  > div.accent {
   position: absolute;
   top: calc(50% - 12px);
   width: 100%;
@@ -56,28 +62,31 @@ div.ornament-marker-container div#ornament > div#accent {
   z-index: 1;
 }
 
-div.ornament-marker-container div#hook {
+div.ornament-marker-container
+  > div.wrapper[data-style="zigzag"]
+  > div.ornament
+  > div.accent {
+  position: absolute;
+  top: calc(50% - 12px);
+  width: 100%;
+  height: 24px;
+  z-index: 1;
+}
+
+div.ornament-marker-container div.hook {
   position: absolute;
   top: -3px;
   left: calc(50% - 5px);
   background: gold;
   width: 10px;
   height: 5px;
-  z-index: 1;
+  z-index: 9;
 }
-
-/* div.ornament-marker-container div#hook::after {
-  content: "";
-  width: 1px;
-  height: 5px;
-  background: red;
-  position: absolute;
-} */
 
 .ornament-icon {
   color: "white";
 }
 
-div.ornament-marker-container > img#icon {
+div.ornament-marker-container > img.icon {
   color: red;
 }

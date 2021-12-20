@@ -1,67 +1,78 @@
-import { ChangeEvent } from "react";
-import { ColorResult, CompactPicker } from "react-color";
 import { Popup, PopupProps } from "react-leaflet";
 import styled from "styled-components";
 import Button from "../../Button";
-import OrnamentData from "../OrnamentData";
+import OrnamentData, { OrnamentStyle } from "../OrnamentData";
+import ColorPicker from "./ColorPicker";
+import OrnamentPainter from "./OrnamentPainter";
+import StylePicker from "./StylePicker";
 
 type Props = PopupProps & {
   ornament: OrnamentData;
+  onStyleChange: (style: OrnamentStyle) => void;
   onPrimaryColorChange: (color: string) => void;
   onSecondaryColorChange: (color: string) => void;
   onDelete?: () => void;
 };
 
+const PopupSectionHeader = styled.h3`
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+`;
+
 const PopupContent = styled.div.attrs({ className: "popup-content" })`
-  /* This ensures the popup is the exact width of the color pickers. */
-  width: 246px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const DeleteButton = styled(Button)`
-  margin-top: 1rem;
+  margin-top: 2rem;
 `;
 
 const EditorPopup = ({
   ornament,
+  onStyleChange,
   onPrimaryColorChange,
   onSecondaryColorChange,
   onDelete,
   ...props
 }: Props) => {
-  const handlePrimaryColorChange = (
-    color: ColorResult,
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
-    onPrimaryColorChange(color.hex);
-  };
-
-  const handleSecondaryColorChange = (
-    color: ColorResult,
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
-    onSecondaryColorChange(color.hex);
-  };
+  const shouldShowSecondaryColor = ornament.style !== OrnamentStyle.solid;
+  const shouldShowEditor = ornament.style === OrnamentStyle.custom;
 
   return (
     <Popup maxWidth={400} {...props}>
       <PopupContent>
-        <h4>Primary Color</h4>
+        <PopupSectionHeader>Style</PopupSectionHeader>
+        <StylePicker value={ornament.style} onChange={onStyleChange} />
 
-        <CompactPicker
-          color={ornament.color}
-          onChange={handlePrimaryColorChange}
-        />
+        <PopupSectionHeader>
+          Color{shouldShowSecondaryColor && "s"}
+        </PopupSectionHeader>
 
-        <h4>Secondary Color</h4>
+        <div style={{ display: "flex" }}>
+          <ColorPicker value={ornament.color} onChange={onPrimaryColorChange} />
 
-        <CompactPicker
-          color={ornament.secondaryColor}
-          onChange={handleSecondaryColorChange}
-        />
+          {shouldShowSecondaryColor && (
+            <ColorPicker
+              value={ornament.secondaryColor || ornament.color}
+              onChange={onSecondaryColorChange}
+            />
+          )}
+        </div>
 
-        <DeleteButton color="red" size="small" onClick={onDelete}>
-          Delete
-        </DeleteButton>
+        {shouldShowEditor && (
+          <>
+            <PopupSectionHeader>Editor</PopupSectionHeader>
+            <OrnamentPainter ornament={ornament} />
+          </>
+        )}
+
+        <div style={{ marginTop: "auto" }}>
+          <DeleteButton color="red" size="small" onClick={onDelete}>
+            Delete
+          </DeleteButton>
+        </div>
       </PopupContent>
     </Popup>
   );

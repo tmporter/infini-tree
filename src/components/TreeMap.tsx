@@ -7,7 +7,7 @@ import pattern from "../assets/tree-pattern.jpg";
 import { useUser } from "../contexts/UserContext";
 import * as apiService from "../services/apiService";
 import Menu from "./Menu";
-import OrnamentData from "./Ornament/OrnamentData";
+import OrnamentData, { OrnamentStyle } from "./Ornament/OrnamentData";
 import OrnamentMap from "./Ornament/OrnamentMap";
 import OrnamentMarker from "./Ornament/OrnamentMarker";
 
@@ -42,6 +42,14 @@ const TreeMap = () => {
 
   const handleDeleteOrnament = async (id: string) => {
     await apiService.deleteOrnament(id);
+    await fetchOrnaments();
+  };
+
+  const handleStyleChange = async (
+    ornament: OrnamentData,
+    style: OrnamentStyle
+  ) => {
+    await apiService.updateOrnament({ ...ornament, style });
     await fetchOrnaments();
   };
 
@@ -80,12 +88,16 @@ const TreeMap = () => {
         <OrnamentMarker
           key={id}
           ornament={o}
+          onStyleChange={(style: OrnamentStyle) => {
+            handleStyleChange(o, style);
+          }}
           onPrimaryColorChange={(color: string) => {
             handleOrnamentPrimaryColorChange(o, color);
           }}
           onSecondaryColorChange={(color: string) => {
             handleOrnamentSecondaryColorChange(o, color);
           }}
+          onDelete={() => handleDeleteOrnament(o.id)}
         />
       ))}
     </StyledMapContainer>
